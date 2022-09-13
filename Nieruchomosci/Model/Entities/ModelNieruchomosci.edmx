@@ -1,0 +1,2826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NieruchomosciModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdresKontrahenta">
+          <Key>
+            <PropertyRef Name="IdAdresuKontrahenta" />
+          </Key>
+          <Property Name="IdAdresuKontrahenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdKontrahenta" Type="int" />
+          <Property Name="IdRodzajuAdresu" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Adresy">
+          <Key>
+            <PropertyRef Name="IdAdresu" />
+          </Key>
+          <Property Name="IdAdresu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kraj" Type="nvarchar" MaxLength="50" />
+          <Property Name="Miasto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ulica" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerDomu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Wojewodztwo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Powiat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gmina" Type="nvarchar" MaxLength="50" />
+          <Property Name="Poczta" Type="nvarchar" MaxLength="50" />
+          <Property Name="KodPocztowy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="AdresyWlascicieli">
+          <Key>
+            <PropertyRef Name="IdAdresuWlasciciela" />
+          </Key>
+          <Property Name="IdAdresuWlasciciela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWlasciciela" Type="int" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="IdRodzajuAdresu" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Akcje">
+          <Key>
+            <PropertyRef Name="IdAkcji" />
+          </Key>
+          <Property Name="IdAkcji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rodzaj" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Budynki">
+          <Key>
+            <PropertyRef Name="IdBudynku" />
+          </Key>
+          <Property Name="IdBudynku" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Miasto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ulica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Numer" Type="nvarchar" MaxLength="50" />
+          <Property Name="LiczbaKondygnacji" Type="int" />
+          <Property Name="LiczbaLokali" Type="int" />
+          <Property Name="RodzajBudynku" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypBudynku" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerDzialki" Type="nvarchar" MaxLength="50" />
+          <Property Name="PowierzchniaUzytkowa" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdJednostkiMiary" Type="int" />
+          <Property Name="RokBudowy" Type="date" />
+          <Property Name="DataOddania" Type="date" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Czynsze">
+          <Key>
+            <PropertyRef Name="IdCzynszu" />
+          </Key>
+          <Property Name="IdCzynszu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWspolnotyMieszkaniowej" Type="int" />
+          <Property Name="IdLokalu" Type="int" />
+          <Property Name="IdWlasciciela" Type="int" />
+          <Property Name="IdOplaty" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="80" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+          <Property Name="KwotaBrutto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Ilosc" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="KwotaNetto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IdStawkiVat" Type="int" />
+          <Property Name="OdKiedy" Type="date" />
+          <Property Name="DoKiedy" Type="date" />
+        </EntityType>
+        <EntityType Name="Faktury">
+          <Key>
+            <PropertyRef Name="IdFaktury" />
+          </Key>
+          <Property Name="IdFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numer" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAdresuKontrahenta" Type="int" />
+          <Property Name="IdWspolnotyMieszkaniowej" Type="int" />
+          <Property Name="DataWystawienia" Type="date" />
+          <Property Name="TerminPlatnosci" Type="date" />
+          <Property Name="IdSposobuPlatnosci" Type="int" />
+          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdRachunkuBankowego" Type="int" />
+          <Property Name="DataCzasZaksiegowania" Type="date" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="80" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+          <Property Name="Razem" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Zaplacono" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Pozostaje" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="JednostkaMiary">
+          <Key>
+            <PropertyRef Name="IdJednostkiMiary" />
+          </Key>
+          <Property Name="IdJednostkiMiary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Kontrahenci">
+          <Key>
+            <PropertyRef Name="IdKontrahenta" />
+          </Key>
+          <Property Name="IdKontrahenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="100" />
+          <Property Name="Nip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Regon" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdRodzajuKontrahenta" Type="int" />
+          <Property Name="Telefon1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="CzyAktywny" Type="bit" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dokument" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAdresu" Type="int" />
+        </EntityType>
+        <EntityType Name="Lokale">
+          <Key>
+            <PropertyRef Name="IdLokalu" />
+          </Key>
+          <Property Name="IdLokalu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBudynku" Type="int" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdRodzajuLokalu" Type="int" />
+          <Property Name="Klatka" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerLokalu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kondygnacja" Type="int" />
+          <Property Name="Udzialy" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Powierzchnia" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdJednostkiMiary" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="LokaleWspolnoty">
+          <Key>
+            <PropertyRef Name="IdLokaluWspolnoty" />
+          </Key>
+          <Property Name="IdLokaluWspolnoty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWspolnotyMieszkaniowej" Type="int" />
+          <Property Name="IdLokalu" Type="int" />
+          <Property Name="IdWlasciciela" Type="int" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Oplaty">
+          <Key>
+            <PropertyRef Name="IdOplaty" />
+          </Key>
+          <Property Name="IdOplaty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="PozycjeFaktury">
+          <Key>
+            <PropertyRef Name="IdPozycjiFaktury" />
+          </Key>
+          <Property Name="IdPozycjiFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFaktury" Type="int" />
+          <Property Name="IdUslugi" Type="int" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ilosc" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdJednostkiMiary" Type="int" />
+          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CenaBrutto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+          <Property Name="KwotaVat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdStawkiVat" Type="int" />
+          <Property Name="CenaNetto" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stanowisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Haslo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="RachunkiBankowe">
+          <Key>
+            <PropertyRef Name="IdRachunkuBankowego" />
+          </Key>
+          <Property Name="IdRachunkuBankowego" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazwaBanku" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerRachunku" Type="nvarchar" MaxLength="50" />
+          <Property Name="Komentarz" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="RodzajAdresu">
+          <Key>
+            <PropertyRef Name="IdRodzajuAdresu" />
+          </Key>
+          <Property Name="IdRodzajuAdresu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="RodzajKontrahenta">
+          <Key>
+            <PropertyRef Name="IdRodzajuKontrahtenta" />
+          </Key>
+          <Property Name="IdRodzajuKontrahtenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="RodzajLokalu">
+          <Key>
+            <PropertyRef Name="IdRodzajuLokalu" />
+          </Key>
+          <Property Name="IdRodzajuLokalu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="SposobPlatnosci">
+          <Key>
+            <PropertyRef Name="IdSposobuPlatnosci" />
+          </Key>
+          <Property Name="IdSposobuPlatnosci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="80" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="StawkiVat">
+          <Key>
+            <PropertyRef Name="IdStawkiVat" />
+          </Key>
+          <Property Name="IdStawkiVat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Wartosc" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IdUslugi" />
+          </Key>
+          <Property Name="IdUslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="Wlasciciele">
+          <Key>
+            <PropertyRef Name="IdWlasciciela" />
+          </Key>
+          <Property Name="IdWlasciciela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pesel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <EntityType Name="WspolnotyMieszkaniowe">
+          <Key>
+            <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+          </Key>
+          <Property Name="IdWspolnotyMieszkaniowej" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="Nip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Regon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Krs" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataPowstania" Type="date" />
+          <Property Name="PoczatkowyRokKsiegowy" Type="date" />
+          <Property Name="BiezacyRokKsiegowy" Type="date" />
+          <Property Name="Uwagi" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAkcji" Type="int" />
+          <Property Name="CzyAktywny" Type="bit" />
+        </EntityType>
+        <Association Name="FK_AdresKontrahenta_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="AdresKontrahenta">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresKontrahenta_Kontrahenci">
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="0..1" />
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontrahenci">
+              <PropertyRef Name="IdKontrahenta" />
+            </Principal>
+            <Dependent Role="AdresKontrahenta">
+              <PropertyRef Name="IdKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresKontrahenta_RodzajAdresu">
+          <End Role="RodzajAdresu" Type="Self.RodzajAdresu" Multiplicity="0..1" />
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajAdresu">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Principal>
+            <Dependent Role="AdresKontrahenta">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adresy_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Adresy">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_RodzajAdresu">
+          <End Role="RodzajAdresu" Type="Self.RodzajAdresu" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajAdresu">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_Wlasciciele">
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wlasciciele">
+              <PropertyRef Name="IdWlasciciela" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdWlasciciela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Akcje_Pracownicy">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Akcje">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budynki_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Budynki" Type="Self.Budynki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Budynki">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budynki_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="0..1" />
+          <End Role="Budynki" Type="Self.Budynki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Principal>
+            <Dependent Role="Budynki">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Lokale">
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokale">
+              <PropertyRef Name="IdLokalu" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdLokalu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Oplaty">
+          <End Role="Oplaty" Type="Self.Oplaty" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oplaty">
+              <PropertyRef Name="IdOplaty" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdOplaty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_StawkiVat">
+          <End Role="StawkiVat" Type="Self.StawkiVat" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StawkiVat">
+              <PropertyRef Name="IdStawkiVat" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdStawkiVat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Wlasciciele">
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wlasciciele">
+              <PropertyRef Name="IdWlasciciela" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdWlasciciela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_WspolnotyMieszkaniowe">
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_AdresKontrahenta">
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdresKontrahenta">
+              <PropertyRef Name="IdAdresuKontrahenta" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdAdresuKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_RachunkiBankowe">
+          <End Role="RachunkiBankowe" Type="Self.RachunkiBankowe" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RachunkiBankowe">
+              <PropertyRef Name="IdRachunkuBankowego" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdRachunkuBankowego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_SposobPlatnosci">
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_WspolnotyMieszkaniowe">
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JednostkaMiary_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="JednostkaMiary">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kontrahenci_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Kontrahenci">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kontrahenci_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Kontrahenci">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kontrahenci_RodzajKontrahenta">
+          <End Role="RodzajKontrahenta" Type="Self.RodzajKontrahenta" Multiplicity="0..1" />
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajKontrahenta">
+              <PropertyRef Name="IdRodzajuKontrahtenta" />
+            </Principal>
+            <Dependent Role="Kontrahenci">
+              <PropertyRef Name="IdRodzajuKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_Budynki">
+          <End Role="Budynki" Type="Self.Budynki" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budynki">
+              <PropertyRef Name="IdBudynku" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdBudynku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_RodzajLokalu">
+          <End Role="RodzajLokalu" Type="Self.RodzajLokalu" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajLokalu">
+              <PropertyRef Name="IdRodzajuLokalu" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdRodzajuLokalu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_Lokale">
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokale">
+              <PropertyRef Name="IdLokalu" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdLokalu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_Wlasciciele">
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wlasciciele">
+              <PropertyRef Name="IdWlasciciela" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdWlasciciela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_WspolnotyMieszkaniowe">
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oplaty_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Oplaty" Type="Self.Oplaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Oplaty">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Faktury">
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faktury">
+              <PropertyRef Name="IdFaktury" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdFaktury" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_StawkiVat">
+          <End Role="StawkiVat" Type="Self.StawkiVat" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StawkiVat">
+              <PropertyRef Name="IdStawkiVat" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdStawkiVat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Uslugi">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IdUslugi" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RachunkiBankowe_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RachunkiBankowe" Type="Self.RachunkiBankowe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RachunkiBankowe">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RodzajAdresu_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RodzajAdresu" Type="Self.RodzajAdresu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RodzajAdresu">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RodzajKontrahenta_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RodzajKontrahenta" Type="Self.RodzajKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RodzajKontrahenta">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RodzajLokalu_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RodzajLokalu" Type="Self.RodzajLokalu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RodzajLokalu">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SposobPlatnosci_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="SposobPlatnosci">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StawkiVat_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="StawkiVat" Type="Self.StawkiVat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="StawkiVat">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wlasciciele_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Wlasciciele">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WspolnotyMieszkaniowe_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WspolnotyMieszkaniowe_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NieruchomosciModelStoreContainer">
+          <EntitySet Name="AdresKontrahenta" EntityType="Self.AdresKontrahenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adresy" EntityType="Self.Adresy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdresyWlascicieli" EntityType="Self.AdresyWlascicieli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Akcje" EntityType="Self.Akcje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Budynki" EntityType="Self.Budynki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Czynsze" EntityType="Self.Czynsze" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faktury" EntityType="Self.Faktury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JednostkaMiary" EntityType="Self.JednostkaMiary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kontrahenci" EntityType="Self.Kontrahenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lokale" EntityType="Self.Lokale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LokaleWspolnoty" EntityType="Self.LokaleWspolnoty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oplaty" EntityType="Self.Oplaty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PozycjeFaktury" EntityType="Self.PozycjeFaktury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RachunkiBankowe" EntityType="Self.RachunkiBankowe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajAdresu" EntityType="Self.RodzajAdresu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajKontrahenta" EntityType="Self.RodzajKontrahenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajLokalu" EntityType="Self.RodzajLokalu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SposobPlatnosci" EntityType="Self.SposobPlatnosci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StawkiVat" EntityType="Self.StawkiVat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wlasciciele" EntityType="Self.Wlasciciele" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WspolnotyMieszkaniowe" EntityType="Self.WspolnotyMieszkaniowe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdresKontrahenta_Akcje" Association="Self.FK_AdresKontrahenta_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresKontrahenta_Kontrahenci" Association="Self.FK_AdresKontrahenta_Kontrahenci">
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresKontrahenta_RodzajAdresu" Association="Self.FK_AdresKontrahenta_RodzajAdresu">
+            <End Role="RodzajAdresu" EntitySet="RodzajAdresu" />
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adresy_Akcje" Association="Self.FK_Adresy_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Adresy" EntitySet="Adresy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_Adresy" Association="Self.FK_AdresyWlascicieli_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_Akcje" Association="Self.FK_AdresyWlascicieli_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_RodzajAdresu" Association="Self.FK_AdresyWlascicieli_RodzajAdresu">
+            <End Role="RodzajAdresu" EntitySet="RodzajAdresu" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_Wlasciciele" Association="Self.FK_AdresyWlascicieli_Wlasciciele">
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Akcje_Pracownicy" Association="Self.FK_Akcje_Pracownicy">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Akcje" EntitySet="Akcje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budynki_Akcje" Association="Self.FK_Budynki_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Budynki" EntitySet="Budynki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budynki_JednostkaMiary" Association="Self.FK_Budynki_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="Budynki" EntitySet="Budynki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Akcje" Association="Self.FK_Czynsze_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Lokale" Association="Self.FK_Czynsze_Lokale">
+            <End Role="Lokale" EntitySet="Lokale" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Oplaty" Association="Self.FK_Czynsze_Oplaty">
+            <End Role="Oplaty" EntitySet="Oplaty" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_StawkiVat" Association="Self.FK_Czynsze_StawkiVat">
+            <End Role="StawkiVat" EntitySet="StawkiVat" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Wlasciciele" Association="Self.FK_Czynsze_Wlasciciele">
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_WspolnotyMieszkaniowe" Association="Self.FK_Czynsze_WspolnotyMieszkaniowe">
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_AdresKontrahenta" Association="Self.FK_Faktury_AdresKontrahenta">
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_Akcje" Association="Self.FK_Faktury_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_RachunkiBankowe" Association="Self.FK_Faktury_RachunkiBankowe">
+            <End Role="RachunkiBankowe" EntitySet="RachunkiBankowe" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_SposobPlatnosci" Association="Self.FK_Faktury_SposobPlatnosci">
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_WspolnotyMieszkaniowe" Association="Self.FK_Faktury_WspolnotyMieszkaniowe">
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JednostkaMiary_Akcje" Association="Self.FK_JednostkaMiary_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kontrahenci_Adresy" Association="Self.FK_Kontrahenci_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kontrahenci_Akcje" Association="Self.FK_Kontrahenci_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kontrahenci_RodzajKontrahenta" Association="Self.FK_Kontrahenci_RodzajKontrahenta">
+            <End Role="RodzajKontrahenta" EntitySet="RodzajKontrahenta" />
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_Akcje" Association="Self.FK_Lokale_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_Budynki" Association="Self.FK_Lokale_Budynki">
+            <End Role="Budynki" EntitySet="Budynki" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_JednostkaMiary" Association="Self.FK_Lokale_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_RodzajLokalu" Association="Self.FK_Lokale_RodzajLokalu">
+            <End Role="RodzajLokalu" EntitySet="RodzajLokalu" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_Akcje" Association="Self.FK_LokaleWspolnoty_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_Lokale" Association="Self.FK_LokaleWspolnoty_Lokale">
+            <End Role="Lokale" EntitySet="Lokale" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_Wlasciciele" Association="Self.FK_LokaleWspolnoty_Wlasciciele">
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_WspolnotyMieszkaniowe" Association="Self.FK_LokaleWspolnoty_WspolnotyMieszkaniowe">
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oplaty_Akcje" Association="Self.FK_Oplaty_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Oplaty" EntitySet="Oplaty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Akcje" Association="Self.FK_PozycjeFaktury_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Faktury" Association="Self.FK_PozycjeFaktury_Faktury">
+            <End Role="Faktury" EntitySet="Faktury" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_JednostkaMiary" Association="Self.FK_PozycjeFaktury_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_StawkiVat" Association="Self.FK_PozycjeFaktury_StawkiVat">
+            <End Role="StawkiVat" EntitySet="StawkiVat" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Uslugi" Association="Self.FK_PozycjeFaktury_Uslugi">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RachunkiBankowe_Akcje" Association="Self.FK_RachunkiBankowe_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RachunkiBankowe" EntitySet="RachunkiBankowe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RodzajAdresu_Akcje" Association="Self.FK_RodzajAdresu_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RodzajAdresu" EntitySet="RodzajAdresu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RodzajKontrahenta_Akcje" Association="Self.FK_RodzajKontrahenta_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RodzajKontrahenta" EntitySet="RodzajKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RodzajLokalu_Akcje" Association="Self.FK_RodzajLokalu_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RodzajLokalu" EntitySet="RodzajLokalu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SposobPlatnosci_Akcje" Association="Self.FK_SposobPlatnosci_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StawkiVat_Akcje" Association="Self.FK_StawkiVat_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="StawkiVat" EntitySet="StawkiVat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Akcje" Association="Self.FK_Uslugi_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wlasciciele_Akcje" Association="Self.FK_Wlasciciele_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WspolnotyMieszkaniowe_Adresy" Association="Self.FK_WspolnotyMieszkaniowe_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WspolnotyMieszkaniowe_Akcje" Association="Self.FK_WspolnotyMieszkaniowe_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NieruchomosciModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdresKontrahenta">
+          <Key>
+            <PropertyRef Name="IdAdresuKontrahenta" />
+          </Key>
+          <Property Name="IdAdresuKontrahenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdKontrahenta" Type="Int32" />
+          <Property Name="IdRodzajuAdresu" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_AdresKontrahenta_Akcje" FromRole="AdresKontrahenta" ToRole="Akcje" />
+          <NavigationProperty Name="Kontrahenci" Relationship="Self.FK_AdresKontrahenta_Kontrahenci" FromRole="AdresKontrahenta" ToRole="Kontrahenci" />
+          <NavigationProperty Name="RodzajAdresu" Relationship="Self.FK_AdresKontrahenta_RodzajAdresu" FromRole="AdresKontrahenta" ToRole="RodzajAdresu" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_AdresKontrahenta" FromRole="AdresKontrahenta" ToRole="Faktury" />
+        </EntityType>
+        <EntityType Name="Adresy">
+          <Key>
+            <PropertyRef Name="IdAdresu" />
+          </Key>
+          <Property Name="IdAdresu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kraj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerDomu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wojewodztwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Powiat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gmina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Poczta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Adresy_Akcje" FromRole="Adresy" ToRole="Akcje" />
+          <NavigationProperty Name="AdresyWlascicieli" Relationship="Self.FK_AdresyWlascicieli_Adresy" FromRole="Adresy" ToRole="AdresyWlascicieli" />
+          <NavigationProperty Name="Kontrahenci" Relationship="Self.FK_Kontrahenci_Adresy" FromRole="Adresy" ToRole="Kontrahenci" />
+          <NavigationProperty Name="WspolnotyMieszkaniowe" Relationship="Self.FK_WspolnotyMieszkaniowe_Adresy" FromRole="Adresy" ToRole="WspolnotyMieszkaniowe" />
+        </EntityType>
+        <EntityType Name="AdresyWlascicieli">
+          <Key>
+            <PropertyRef Name="IdAdresuWlasciciela" />
+          </Key>
+          <Property Name="IdAdresuWlasciciela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWlasciciela" Type="Int32" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="IdRodzajuAdresu" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_AdresyWlascicieli_Adresy" FromRole="AdresyWlascicieli" ToRole="Adresy" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_AdresyWlascicieli_Akcje" FromRole="AdresyWlascicieli" ToRole="Akcje" />
+          <NavigationProperty Name="RodzajAdresu" Relationship="Self.FK_AdresyWlascicieli_RodzajAdresu" FromRole="AdresyWlascicieli" ToRole="RodzajAdresu" />
+          <NavigationProperty Name="Wlasciciele" Relationship="Self.FK_AdresyWlascicieli_Wlasciciele" FromRole="AdresyWlascicieli" ToRole="Wlasciciele" />
+        </EntityType>
+        <EntityType Name="Akcje">
+          <Key>
+            <PropertyRef Name="IdAkcji" />
+          </Key>
+          <Property Name="IdAkcji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rodzaj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="AdresKontrahenta" Relationship="Self.FK_AdresKontrahenta_Akcje" FromRole="Akcje" ToRole="AdresKontrahenta" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_Adresy_Akcje" FromRole="Akcje" ToRole="Adresy" />
+          <NavigationProperty Name="AdresyWlascicieli" Relationship="Self.FK_AdresyWlascicieli_Akcje" FromRole="Akcje" ToRole="AdresyWlascicieli" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.FK_Akcje_Pracownicy" FromRole="Akcje" ToRole="Pracownicy" />
+          <NavigationProperty Name="Budynki" Relationship="Self.FK_Budynki_Akcje" FromRole="Akcje" ToRole="Budynki" />
+          <NavigationProperty Name="Czynsze" Relationship="Self.FK_Czynsze_Akcje" FromRole="Akcje" ToRole="Czynsze" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_Akcje" FromRole="Akcje" ToRole="Faktury" />
+          <NavigationProperty Name="JednostkaMiary" Relationship="Self.FK_JednostkaMiary_Akcje" FromRole="Akcje" ToRole="JednostkaMiary" />
+          <NavigationProperty Name="Kontrahenci" Relationship="Self.FK_Kontrahenci_Akcje" FromRole="Akcje" ToRole="Kontrahenci" />
+          <NavigationProperty Name="Lokale" Relationship="Self.FK_Lokale_Akcje" FromRole="Akcje" ToRole="Lokale" />
+          <NavigationProperty Name="LokaleWspolnoty" Relationship="Self.FK_LokaleWspolnoty_Akcje" FromRole="Akcje" ToRole="LokaleWspolnoty" />
+          <NavigationProperty Name="Oplaty" Relationship="Self.FK_Oplaty_Akcje" FromRole="Akcje" ToRole="Oplaty" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_Akcje" FromRole="Akcje" ToRole="PozycjeFaktury" />
+          <NavigationProperty Name="RachunkiBankowe" Relationship="Self.FK_RachunkiBankowe_Akcje" FromRole="Akcje" ToRole="RachunkiBankowe" />
+          <NavigationProperty Name="RodzajAdresu" Relationship="Self.FK_RodzajAdresu_Akcje" FromRole="Akcje" ToRole="RodzajAdresu" />
+          <NavigationProperty Name="RodzajKontrahenta" Relationship="Self.FK_RodzajKontrahenta_Akcje" FromRole="Akcje" ToRole="RodzajKontrahenta" />
+          <NavigationProperty Name="RodzajLokalu" Relationship="Self.FK_RodzajLokalu_Akcje" FromRole="Akcje" ToRole="RodzajLokalu" />
+          <NavigationProperty Name="SposobPlatnosci" Relationship="Self.FK_SposobPlatnosci_Akcje" FromRole="Akcje" ToRole="SposobPlatnosci" />
+          <NavigationProperty Name="StawkiVat" Relationship="Self.FK_StawkiVat_Akcje" FromRole="Akcje" ToRole="StawkiVat" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK_Uslugi_Akcje" FromRole="Akcje" ToRole="Uslugi" />
+          <NavigationProperty Name="Wlasciciele" Relationship="Self.FK_Wlasciciele_Akcje" FromRole="Akcje" ToRole="Wlasciciele" />
+          <NavigationProperty Name="WspolnotyMieszkaniowe" Relationship="Self.FK_WspolnotyMieszkaniowe_Akcje" FromRole="Akcje" ToRole="WspolnotyMieszkaniowe" />
+        </EntityType>
+        <EntityType Name="Budynki">
+          <Key>
+            <PropertyRef Name="IdBudynku" />
+          </Key>
+          <Property Name="IdBudynku" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LiczbaKondygnacji" Type="Int32" />
+          <Property Name="LiczbaLokali" Type="Int32" />
+          <Property Name="RodzajBudynku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypBudynku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerDzialki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PowierzchniaUzytkowa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdJednostkiMiary" Type="Int32" />
+          <Property Name="RokBudowy" Type="DateTime" Precision="0" />
+          <Property Name="DataOddania" Type="DateTime" Precision="0" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Budynki_Akcje" FromRole="Budynki" ToRole="Akcje" />
+          <NavigationProperty Name="JednostkaMiary" Relationship="Self.FK_Budynki_JednostkaMiary" FromRole="Budynki" ToRole="JednostkaMiary" />
+          <NavigationProperty Name="Lokale" Relationship="Self.FK_Lokale_Budynki" FromRole="Budynki" ToRole="Lokale" />
+        </EntityType>
+        <EntityType Name="Czynsze">
+          <Key>
+            <PropertyRef Name="IdCzynszu" />
+          </Key>
+          <Property Name="IdCzynszu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWspolnotyMieszkaniowej" Type="Int32" />
+          <Property Name="IdLokalu" Type="Int32" />
+          <Property Name="IdWlasciciela" Type="Int32" />
+          <Property Name="IdOplaty" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <Property Name="KwotaBrutto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Ilosc" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="KwotaNetto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IdStawkiVat" Type="Int32" />
+          <Property Name="OdKiedy" Type="DateTime" Precision="0" />
+          <Property Name="DoKiedy" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Czynsze_Akcje" FromRole="Czynsze" ToRole="Akcje" />
+          <NavigationProperty Name="Lokale" Relationship="Self.FK_Czynsze_Lokale" FromRole="Czynsze" ToRole="Lokale" />
+          <NavigationProperty Name="Oplaty" Relationship="Self.FK_Czynsze_Oplaty" FromRole="Czynsze" ToRole="Oplaty" />
+          <NavigationProperty Name="StawkiVat" Relationship="Self.FK_Czynsze_StawkiVat" FromRole="Czynsze" ToRole="StawkiVat" />
+          <NavigationProperty Name="Wlasciciele" Relationship="Self.FK_Czynsze_Wlasciciele" FromRole="Czynsze" ToRole="Wlasciciele" />
+          <NavigationProperty Name="WspolnotyMieszkaniowe" Relationship="Self.FK_Czynsze_WspolnotyMieszkaniowe" FromRole="Czynsze" ToRole="WspolnotyMieszkaniowe" />
+        </EntityType>
+        <EntityType Name="Faktury">
+          <Key>
+            <PropertyRef Name="IdFaktury" />
+          </Key>
+          <Property Name="IdFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAdresuKontrahenta" Type="Int32" />
+          <Property Name="IdWspolnotyMieszkaniowej" Type="Int32" />
+          <Property Name="DataWystawienia" Type="DateTime" Precision="0" />
+          <Property Name="TerminPlatnosci" Type="DateTime" Precision="0" />
+          <Property Name="IdSposobuPlatnosci" Type="Int32" />
+          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdRachunkuBankowego" Type="Int32" />
+          <Property Name="DataCzasZaksiegowania" Type="DateTime" Precision="0" />
+          <Property Name="Uwagi" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <Property Name="Razem" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Zaplacono" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Pozostaje" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AdresKontrahenta" Relationship="Self.FK_Faktury_AdresKontrahenta" FromRole="Faktury" ToRole="AdresKontrahenta" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Faktury_Akcje" FromRole="Faktury" ToRole="Akcje" />
+          <NavigationProperty Name="RachunkiBankowe" Relationship="Self.FK_Faktury_RachunkiBankowe" FromRole="Faktury" ToRole="RachunkiBankowe" />
+          <NavigationProperty Name="SposobPlatnosci" Relationship="Self.FK_Faktury_SposobPlatnosci" FromRole="Faktury" ToRole="SposobPlatnosci" />
+          <NavigationProperty Name="WspolnotyMieszkaniowe" Relationship="Self.FK_Faktury_WspolnotyMieszkaniowe" FromRole="Faktury" ToRole="WspolnotyMieszkaniowe" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_Faktury" FromRole="Faktury" ToRole="PozycjeFaktury" />
+        </EntityType>
+        <EntityType Name="JednostkaMiary">
+          <Key>
+            <PropertyRef Name="IdJednostkiMiary" />
+          </Key>
+          <Property Name="IdJednostkiMiary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_JednostkaMiary_Akcje" FromRole="JednostkaMiary" ToRole="Akcje" />
+          <NavigationProperty Name="Budynki" Relationship="Self.FK_Budynki_JednostkaMiary" FromRole="JednostkaMiary" ToRole="Budynki" />
+          <NavigationProperty Name="Lokale" Relationship="Self.FK_Lokale_JednostkaMiary" FromRole="JednostkaMiary" ToRole="Lokale" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_JednostkaMiary" FromRole="JednostkaMiary" ToRole="PozycjeFaktury" />
+        </EntityType>
+        <EntityType Name="Kontrahenci">
+          <Key>
+            <PropertyRef Name="IdKontrahenta" />
+          </Key>
+          <Property Name="IdKontrahenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Nip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Regon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRodzajuKontrahenta" Type="Int32" />
+          <Property Name="Telefon1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dokument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <NavigationProperty Name="AdresKontrahenta" Relationship="Self.FK_AdresKontrahenta_Kontrahenci" FromRole="Kontrahenci" ToRole="AdresKontrahenta" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_Kontrahenci_Adresy" FromRole="Kontrahenci" ToRole="Adresy" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Kontrahenci_Akcje" FromRole="Kontrahenci" ToRole="Akcje" />
+          <NavigationProperty Name="RodzajKontrahenta" Relationship="Self.FK_Kontrahenci_RodzajKontrahenta" FromRole="Kontrahenci" ToRole="RodzajKontrahenta" />
+        </EntityType>
+        <EntityType Name="Lokale">
+          <Key>
+            <PropertyRef Name="IdLokalu" />
+          </Key>
+          <Property Name="IdLokalu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBudynku" Type="Int32" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRodzajuLokalu" Type="Int32" />
+          <Property Name="Klatka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerLokalu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kondygnacja" Type="Int32" />
+          <Property Name="Udzialy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Powierzchnia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdJednostkiMiary" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Lokale_Akcje" FromRole="Lokale" ToRole="Akcje" />
+          <NavigationProperty Name="Budynki" Relationship="Self.FK_Lokale_Budynki" FromRole="Lokale" ToRole="Budynki" />
+          <NavigationProperty Name="Czynsze" Relationship="Self.FK_Czynsze_Lokale" FromRole="Lokale" ToRole="Czynsze" />
+          <NavigationProperty Name="JednostkaMiary" Relationship="Self.FK_Lokale_JednostkaMiary" FromRole="Lokale" ToRole="JednostkaMiary" />
+          <NavigationProperty Name="RodzajLokalu" Relationship="Self.FK_Lokale_RodzajLokalu" FromRole="Lokale" ToRole="RodzajLokalu" />
+          <NavigationProperty Name="LokaleWspolnoty" Relationship="Self.FK_LokaleWspolnoty_Lokale" FromRole="Lokale" ToRole="LokaleWspolnoty" />
+        </EntityType>
+        <EntityType Name="LokaleWspolnoty">
+          <Key>
+            <PropertyRef Name="IdLokaluWspolnoty" />
+          </Key>
+          <Property Name="IdLokaluWspolnoty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWspolnotyMieszkaniowej" Type="Int32" />
+          <Property Name="IdLokalu" Type="Int32" />
+          <Property Name="IdWlasciciela" Type="Int32" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_LokaleWspolnoty_Akcje" FromRole="LokaleWspolnoty" ToRole="Akcje" />
+          <NavigationProperty Name="Lokale" Relationship="Self.FK_LokaleWspolnoty_Lokale" FromRole="LokaleWspolnoty" ToRole="Lokale" />
+          <NavigationProperty Name="Wlasciciele" Relationship="Self.FK_LokaleWspolnoty_Wlasciciele" FromRole="LokaleWspolnoty" ToRole="Wlasciciele" />
+          <NavigationProperty Name="WspolnotyMieszkaniowe" Relationship="Self.FK_LokaleWspolnoty_WspolnotyMieszkaniowe" FromRole="LokaleWspolnoty" ToRole="WspolnotyMieszkaniowe" />
+        </EntityType>
+        <EntityType Name="Oplaty">
+          <Key>
+            <PropertyRef Name="IdOplaty" />
+          </Key>
+          <Property Name="IdOplaty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Oplaty_Akcje" FromRole="Oplaty" ToRole="Akcje" />
+          <NavigationProperty Name="Czynsze" Relationship="Self.FK_Czynsze_Oplaty" FromRole="Oplaty" ToRole="Czynsze" />
+        </EntityType>
+        <EntityType Name="PozycjeFaktury">
+          <Key>
+            <PropertyRef Name="IdPozycjiFaktury" />
+          </Key>
+          <Property Name="IdPozycjiFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFaktury" Type="Int32" />
+          <Property Name="IdUslugi" Type="Int32" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ilosc" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdJednostkiMiary" Type="Int32" />
+          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CenaBrutto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <Property Name="KwotaVat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdStawkiVat" Type="Int32" />
+          <Property Name="CenaNetto" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_PozycjeFaktury_Akcje" FromRole="PozycjeFaktury" ToRole="Akcje" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_PozycjeFaktury_Faktury" FromRole="PozycjeFaktury" ToRole="Faktury" />
+          <NavigationProperty Name="JednostkaMiary" Relationship="Self.FK_PozycjeFaktury_JednostkaMiary" FromRole="PozycjeFaktury" ToRole="JednostkaMiary" />
+          <NavigationProperty Name="StawkiVat" Relationship="Self.FK_PozycjeFaktury_StawkiVat" FromRole="PozycjeFaktury" ToRole="StawkiVat" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK_PozycjeFaktury_Uslugi" FromRole="PozycjeFaktury" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stanowisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Akcje_Pracownicy" FromRole="Pracownicy" ToRole="Akcje" />
+        </EntityType>
+        <EntityType Name="RachunkiBankowe">
+          <Key>
+            <PropertyRef Name="IdRachunkuBankowego" />
+          </Key>
+          <Property Name="IdRachunkuBankowego" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaBanku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerRachunku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Komentarz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_RachunkiBankowe_Akcje" FromRole="RachunkiBankowe" ToRole="Akcje" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_RachunkiBankowe" FromRole="RachunkiBankowe" ToRole="Faktury" />
+        </EntityType>
+        <EntityType Name="RodzajAdresu">
+          <Key>
+            <PropertyRef Name="IdRodzajuAdresu" />
+          </Key>
+          <Property Name="IdRodzajuAdresu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="AdresKontrahenta" Relationship="Self.FK_AdresKontrahenta_RodzajAdresu" FromRole="RodzajAdresu" ToRole="AdresKontrahenta" />
+          <NavigationProperty Name="AdresyWlascicieli" Relationship="Self.FK_AdresyWlascicieli_RodzajAdresu" FromRole="RodzajAdresu" ToRole="AdresyWlascicieli" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_RodzajAdresu_Akcje" FromRole="RodzajAdresu" ToRole="Akcje" />
+        </EntityType>
+        <EntityType Name="RodzajKontrahenta">
+          <Key>
+            <PropertyRef Name="IdRodzajuKontrahtenta" />
+          </Key>
+          <Property Name="IdRodzajuKontrahtenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_RodzajKontrahenta_Akcje" FromRole="RodzajKontrahenta" ToRole="Akcje" />
+          <NavigationProperty Name="Kontrahenci" Relationship="Self.FK_Kontrahenci_RodzajKontrahenta" FromRole="RodzajKontrahenta" ToRole="Kontrahenci" />
+        </EntityType>
+        <EntityType Name="RodzajLokalu">
+          <Key>
+            <PropertyRef Name="IdRodzajuLokalu" />
+          </Key>
+          <Property Name="IdRodzajuLokalu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_RodzajLokalu_Akcje" FromRole="RodzajLokalu" ToRole="Akcje" />
+          <NavigationProperty Name="Lokale" Relationship="Self.FK_Lokale_RodzajLokalu" FromRole="RodzajLokalu" ToRole="Lokale" />
+        </EntityType>
+        <EntityType Name="SposobPlatnosci">
+          <Key>
+            <PropertyRef Name="IdSposobuPlatnosci" />
+          </Key>
+          <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_SposobPlatnosci_Akcje" FromRole="SposobPlatnosci" ToRole="Akcje" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_SposobPlatnosci" FromRole="SposobPlatnosci" ToRole="Faktury" />
+        </EntityType>
+        <EntityType Name="StawkiVat">
+          <Key>
+            <PropertyRef Name="IdStawkiVat" />
+          </Key>
+          <Property Name="IdStawkiVat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wartosc" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Uwagi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_StawkiVat_Akcje" FromRole="StawkiVat" ToRole="Akcje" />
+          <NavigationProperty Name="Czynsze" Relationship="Self.FK_Czynsze_StawkiVat" FromRole="StawkiVat" ToRole="Czynsze" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_StawkiVat" FromRole="StawkiVat" ToRole="PozycjeFaktury" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IdUslugi" />
+          </Key>
+          <Property Name="IdUslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Uslugi_Akcje" FromRole="Uslugi" ToRole="Akcje" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_Uslugi" FromRole="Uslugi" ToRole="PozycjeFaktury" />
+        </EntityType>
+        <EntityType Name="Wlasciciele">
+          <Key>
+            <PropertyRef Name="IdWlasciciela" />
+          </Key>
+          <Property Name="IdWlasciciela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pesel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="AdresyWlascicieli" Relationship="Self.FK_AdresyWlascicieli_Wlasciciele" FromRole="Wlasciciele" ToRole="AdresyWlascicieli" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_Wlasciciele_Akcje" FromRole="Wlasciciele" ToRole="Akcje" />
+          <NavigationProperty Name="Czynsze" Relationship="Self.FK_Czynsze_Wlasciciele" FromRole="Wlasciciele" ToRole="Czynsze" />
+          <NavigationProperty Name="LokaleWspolnoty" Relationship="Self.FK_LokaleWspolnoty_Wlasciciele" FromRole="Wlasciciele" ToRole="LokaleWspolnoty" />
+        </EntityType>
+        <EntityType Name="WspolnotyMieszkaniowe">
+          <Key>
+            <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+          </Key>
+          <Property Name="IdWspolnotyMieszkaniowej" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="Nip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Regon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Krs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataPowstania" Type="DateTime" Precision="0" />
+          <Property Name="PoczatkowyRokKsiegowy" Type="DateTime" Precision="0" />
+          <Property Name="BiezacyRokKsiegowy" Type="DateTime" Precision="0" />
+          <Property Name="Uwagi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAkcji" Type="Int32" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_WspolnotyMieszkaniowe_Adresy" FromRole="WspolnotyMieszkaniowe" ToRole="Adresy" />
+          <NavigationProperty Name="Akcje" Relationship="Self.FK_WspolnotyMieszkaniowe_Akcje" FromRole="WspolnotyMieszkaniowe" ToRole="Akcje" />
+          <NavigationProperty Name="Czynsze" Relationship="Self.FK_Czynsze_WspolnotyMieszkaniowe" FromRole="WspolnotyMieszkaniowe" ToRole="Czynsze" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_WspolnotyMieszkaniowe" FromRole="WspolnotyMieszkaniowe" ToRole="Faktury" />
+          <NavigationProperty Name="LokaleWspolnoty" Relationship="Self.FK_LokaleWspolnoty_WspolnotyMieszkaniowe" FromRole="WspolnotyMieszkaniowe" ToRole="LokaleWspolnoty" />
+        </EntityType>
+        <Association Name="FK_AdresKontrahenta_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="AdresKontrahenta">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresKontrahenta_Kontrahenci">
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="0..1" />
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontrahenci">
+              <PropertyRef Name="IdKontrahenta" />
+            </Principal>
+            <Dependent Role="AdresKontrahenta">
+              <PropertyRef Name="IdKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresKontrahenta_RodzajAdresu">
+          <End Role="RodzajAdresu" Type="Self.RodzajAdresu" Multiplicity="0..1" />
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajAdresu">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Principal>
+            <Dependent Role="AdresKontrahenta">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_AdresKontrahenta">
+          <End Role="AdresKontrahenta" Type="Self.AdresKontrahenta" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdresKontrahenta">
+              <PropertyRef Name="IdAdresuKontrahenta" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdAdresuKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adresy_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Adresy">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kontrahenci_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Kontrahenci">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WspolnotyMieszkaniowe_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_RodzajAdresu">
+          <End Role="RodzajAdresu" Type="Self.RodzajAdresu" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajAdresu">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdRodzajuAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdresyWlascicieli_Wlasciciele">
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="0..1" />
+          <End Role="AdresyWlascicieli" Type="Self.AdresyWlascicieli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wlasciciele">
+              <PropertyRef Name="IdWlasciciela" />
+            </Principal>
+            <Dependent Role="AdresyWlascicieli">
+              <PropertyRef Name="IdWlasciciela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Akcje_Pracownicy">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Akcje">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budynki_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Budynki" Type="Self.Budynki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Budynki">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JednostkaMiary_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="JednostkaMiary">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kontrahenci_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Kontrahenci">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oplaty_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Oplaty" Type="Self.Oplaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Oplaty">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RachunkiBankowe_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RachunkiBankowe" Type="Self.RachunkiBankowe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RachunkiBankowe">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RodzajAdresu_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RodzajAdresu" Type="Self.RodzajAdresu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RodzajAdresu">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RodzajKontrahenta_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RodzajKontrahenta" Type="Self.RodzajKontrahenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RodzajKontrahenta">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RodzajLokalu_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="RodzajLokalu" Type="Self.RodzajLokalu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="RodzajLokalu">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SposobPlatnosci_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="SposobPlatnosci">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StawkiVat_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="StawkiVat" Type="Self.StawkiVat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="StawkiVat">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wlasciciele_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="Wlasciciele">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WspolnotyMieszkaniowe_Akcje">
+          <End Role="Akcje" Type="Self.Akcje" Multiplicity="0..1" />
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akcje">
+              <PropertyRef Name="IdAkcji" />
+            </Principal>
+            <Dependent Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdAkcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budynki_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="0..1" />
+          <End Role="Budynki" Type="Self.Budynki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Principal>
+            <Dependent Role="Budynki">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_Budynki">
+          <End Role="Budynki" Type="Self.Budynki" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budynki">
+              <PropertyRef Name="IdBudynku" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdBudynku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Lokale">
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokale">
+              <PropertyRef Name="IdLokalu" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdLokalu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Oplaty">
+          <End Role="Oplaty" Type="Self.Oplaty" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oplaty">
+              <PropertyRef Name="IdOplaty" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdOplaty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_StawkiVat">
+          <End Role="StawkiVat" Type="Self.StawkiVat" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StawkiVat">
+              <PropertyRef Name="IdStawkiVat" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdStawkiVat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_Wlasciciele">
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wlasciciele">
+              <PropertyRef Name="IdWlasciciela" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdWlasciciela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Czynsze_WspolnotyMieszkaniowe">
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="0..1" />
+          <End Role="Czynsze" Type="Self.Czynsze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Principal>
+            <Dependent Role="Czynsze">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_RachunkiBankowe">
+          <End Role="RachunkiBankowe" Type="Self.RachunkiBankowe" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RachunkiBankowe">
+              <PropertyRef Name="IdRachunkuBankowego" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdRachunkuBankowego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_SposobPlatnosci">
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_WspolnotyMieszkaniowe">
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Faktury">
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faktury">
+              <PropertyRef Name="IdFaktury" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdFaktury" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdJednostkiMiary" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kontrahenci_RodzajKontrahenta">
+          <End Role="RodzajKontrahenta" Type="Self.RodzajKontrahenta" Multiplicity="0..1" />
+          <End Role="Kontrahenci" Type="Self.Kontrahenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajKontrahenta">
+              <PropertyRef Name="IdRodzajuKontrahtenta" />
+            </Principal>
+            <Dependent Role="Kontrahenci">
+              <PropertyRef Name="IdRodzajuKontrahenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lokale_RodzajLokalu">
+          <End Role="RodzajLokalu" Type="Self.RodzajLokalu" Multiplicity="0..1" />
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajLokalu">
+              <PropertyRef Name="IdRodzajuLokalu" />
+            </Principal>
+            <Dependent Role="Lokale">
+              <PropertyRef Name="IdRodzajuLokalu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_Lokale">
+          <End Role="Lokale" Type="Self.Lokale" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokale">
+              <PropertyRef Name="IdLokalu" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdLokalu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_Wlasciciele">
+          <End Role="Wlasciciele" Type="Self.Wlasciciele" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wlasciciele">
+              <PropertyRef Name="IdWlasciciela" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdWlasciciela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LokaleWspolnoty_WspolnotyMieszkaniowe">
+          <End Role="WspolnotyMieszkaniowe" Type="Self.WspolnotyMieszkaniowe" Multiplicity="0..1" />
+          <End Role="LokaleWspolnoty" Type="Self.LokaleWspolnoty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WspolnotyMieszkaniowe">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Principal>
+            <Dependent Role="LokaleWspolnoty">
+              <PropertyRef Name="IdWspolnotyMieszkaniowej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_StawkiVat">
+          <End Role="StawkiVat" Type="Self.StawkiVat" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StawkiVat">
+              <PropertyRef Name="IdStawkiVat" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdStawkiVat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Uslugi">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IdUslugi" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NieruchomosciEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdresKontrahenta" EntityType="Self.AdresKontrahenta" />
+          <EntitySet Name="Adresy" EntityType="Self.Adresy" />
+          <EntitySet Name="AdresyWlascicieli" EntityType="Self.AdresyWlascicieli" />
+          <EntitySet Name="Akcje" EntityType="Self.Akcje" />
+          <EntitySet Name="Budynki" EntityType="Self.Budynki" />
+          <EntitySet Name="Czynsze" EntityType="Self.Czynsze" />
+          <EntitySet Name="Faktury" EntityType="Self.Faktury" />
+          <EntitySet Name="JednostkaMiary" EntityType="Self.JednostkaMiary" />
+          <EntitySet Name="Kontrahenci" EntityType="Self.Kontrahenci" />
+          <EntitySet Name="Lokale" EntityType="Self.Lokale" />
+          <EntitySet Name="LokaleWspolnoty" EntityType="Self.LokaleWspolnoty" />
+          <EntitySet Name="Oplaty" EntityType="Self.Oplaty" />
+          <EntitySet Name="PozycjeFaktury" EntityType="Self.PozycjeFaktury" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
+          <EntitySet Name="RachunkiBankowe" EntityType="Self.RachunkiBankowe" />
+          <EntitySet Name="RodzajAdresu" EntityType="Self.RodzajAdresu" />
+          <EntitySet Name="RodzajKontrahenta" EntityType="Self.RodzajKontrahenta" />
+          <EntitySet Name="RodzajLokalu" EntityType="Self.RodzajLokalu" />
+          <EntitySet Name="SposobPlatnosci" EntityType="Self.SposobPlatnosci" />
+          <EntitySet Name="StawkiVat" EntityType="Self.StawkiVat" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+          <EntitySet Name="Wlasciciele" EntityType="Self.Wlasciciele" />
+          <EntitySet Name="WspolnotyMieszkaniowe" EntityType="Self.WspolnotyMieszkaniowe" />
+          <AssociationSet Name="FK_AdresKontrahenta_Akcje" Association="Self.FK_AdresKontrahenta_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresKontrahenta_Kontrahenci" Association="Self.FK_AdresKontrahenta_Kontrahenci">
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresKontrahenta_RodzajAdresu" Association="Self.FK_AdresKontrahenta_RodzajAdresu">
+            <End Role="RodzajAdresu" EntitySet="RodzajAdresu" />
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_AdresKontrahenta" Association="Self.FK_Faktury_AdresKontrahenta">
+            <End Role="AdresKontrahenta" EntitySet="AdresKontrahenta" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adresy_Akcje" Association="Self.FK_Adresy_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Adresy" EntitySet="Adresy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_Adresy" Association="Self.FK_AdresyWlascicieli_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kontrahenci_Adresy" Association="Self.FK_Kontrahenci_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WspolnotyMieszkaniowe_Adresy" Association="Self.FK_WspolnotyMieszkaniowe_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_Akcje" Association="Self.FK_AdresyWlascicieli_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_RodzajAdresu" Association="Self.FK_AdresyWlascicieli_RodzajAdresu">
+            <End Role="RodzajAdresu" EntitySet="RodzajAdresu" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdresyWlascicieli_Wlasciciele" Association="Self.FK_AdresyWlascicieli_Wlasciciele">
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+            <End Role="AdresyWlascicieli" EntitySet="AdresyWlascicieli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Akcje_Pracownicy" Association="Self.FK_Akcje_Pracownicy">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Akcje" EntitySet="Akcje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budynki_Akcje" Association="Self.FK_Budynki_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Budynki" EntitySet="Budynki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Akcje" Association="Self.FK_Czynsze_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_Akcje" Association="Self.FK_Faktury_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JednostkaMiary_Akcje" Association="Self.FK_JednostkaMiary_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kontrahenci_Akcje" Association="Self.FK_Kontrahenci_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_Akcje" Association="Self.FK_Lokale_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_Akcje" Association="Self.FK_LokaleWspolnoty_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oplaty_Akcje" Association="Self.FK_Oplaty_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Oplaty" EntitySet="Oplaty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Akcje" Association="Self.FK_PozycjeFaktury_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RachunkiBankowe_Akcje" Association="Self.FK_RachunkiBankowe_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RachunkiBankowe" EntitySet="RachunkiBankowe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RodzajAdresu_Akcje" Association="Self.FK_RodzajAdresu_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RodzajAdresu" EntitySet="RodzajAdresu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RodzajKontrahenta_Akcje" Association="Self.FK_RodzajKontrahenta_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RodzajKontrahenta" EntitySet="RodzajKontrahenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RodzajLokalu_Akcje" Association="Self.FK_RodzajLokalu_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="RodzajLokalu" EntitySet="RodzajLokalu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SposobPlatnosci_Akcje" Association="Self.FK_SposobPlatnosci_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StawkiVat_Akcje" Association="Self.FK_StawkiVat_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="StawkiVat" EntitySet="StawkiVat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Akcje" Association="Self.FK_Uslugi_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wlasciciele_Akcje" Association="Self.FK_Wlasciciele_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WspolnotyMieszkaniowe_Akcje" Association="Self.FK_WspolnotyMieszkaniowe_Akcje">
+            <End Role="Akcje" EntitySet="Akcje" />
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budynki_JednostkaMiary" Association="Self.FK_Budynki_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="Budynki" EntitySet="Budynki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_Budynki" Association="Self.FK_Lokale_Budynki">
+            <End Role="Budynki" EntitySet="Budynki" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Lokale" Association="Self.FK_Czynsze_Lokale">
+            <End Role="Lokale" EntitySet="Lokale" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Oplaty" Association="Self.FK_Czynsze_Oplaty">
+            <End Role="Oplaty" EntitySet="Oplaty" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_StawkiVat" Association="Self.FK_Czynsze_StawkiVat">
+            <End Role="StawkiVat" EntitySet="StawkiVat" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_Wlasciciele" Association="Self.FK_Czynsze_Wlasciciele">
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Czynsze_WspolnotyMieszkaniowe" Association="Self.FK_Czynsze_WspolnotyMieszkaniowe">
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+            <End Role="Czynsze" EntitySet="Czynsze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_RachunkiBankowe" Association="Self.FK_Faktury_RachunkiBankowe">
+            <End Role="RachunkiBankowe" EntitySet="RachunkiBankowe" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_SposobPlatnosci" Association="Self.FK_Faktury_SposobPlatnosci">
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_WspolnotyMieszkaniowe" Association="Self.FK_Faktury_WspolnotyMieszkaniowe">
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Faktury" Association="Self.FK_PozycjeFaktury_Faktury">
+            <End Role="Faktury" EntitySet="Faktury" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_JednostkaMiary" Association="Self.FK_Lokale_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_JednostkaMiary" Association="Self.FK_PozycjeFaktury_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kontrahenci_RodzajKontrahenta" Association="Self.FK_Kontrahenci_RodzajKontrahenta">
+            <End Role="RodzajKontrahenta" EntitySet="RodzajKontrahenta" />
+            <End Role="Kontrahenci" EntitySet="Kontrahenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lokale_RodzajLokalu" Association="Self.FK_Lokale_RodzajLokalu">
+            <End Role="RodzajLokalu" EntitySet="RodzajLokalu" />
+            <End Role="Lokale" EntitySet="Lokale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_Lokale" Association="Self.FK_LokaleWspolnoty_Lokale">
+            <End Role="Lokale" EntitySet="Lokale" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_Wlasciciele" Association="Self.FK_LokaleWspolnoty_Wlasciciele">
+            <End Role="Wlasciciele" EntitySet="Wlasciciele" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LokaleWspolnoty_WspolnotyMieszkaniowe" Association="Self.FK_LokaleWspolnoty_WspolnotyMieszkaniowe">
+            <End Role="WspolnotyMieszkaniowe" EntitySet="WspolnotyMieszkaniowe" />
+            <End Role="LokaleWspolnoty" EntitySet="LokaleWspolnoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_StawkiVat" Association="Self.FK_PozycjeFaktury_StawkiVat">
+            <End Role="StawkiVat" EntitySet="StawkiVat" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Uslugi" Association="Self.FK_PozycjeFaktury_Uslugi">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NieruchomosciModelStoreContainer" CdmEntityContainer="NieruchomosciEntities">
+          <EntitySetMapping Name="AdresKontrahenta">
+            <EntityTypeMapping TypeName="NieruchomosciModel.AdresKontrahenta">
+              <MappingFragment StoreEntitySet="AdresKontrahenta">
+                <ScalarProperty Name="IdAdresuKontrahenta" ColumnName="IdAdresuKontrahenta" />
+                <ScalarProperty Name="IdKontrahenta" ColumnName="IdKontrahenta" />
+                <ScalarProperty Name="IdRodzajuAdresu" ColumnName="IdRodzajuAdresu" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adresy">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Adresy">
+              <MappingFragment StoreEntitySet="Adresy">
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="NumerDomu" ColumnName="NumerDomu" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Powiat" ColumnName="Powiat" />
+                <ScalarProperty Name="Gmina" ColumnName="Gmina" />
+                <ScalarProperty Name="Poczta" ColumnName="Poczta" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdresyWlascicieli">
+            <EntityTypeMapping TypeName="NieruchomosciModel.AdresyWlascicieli">
+              <MappingFragment StoreEntitySet="AdresyWlascicieli">
+                <ScalarProperty Name="IdAdresuWlasciciela" ColumnName="IdAdresuWlasciciela" />
+                <ScalarProperty Name="IdWlasciciela" ColumnName="IdWlasciciela" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="IdRodzajuAdresu" ColumnName="IdRodzajuAdresu" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Akcje">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Akcje">
+              <MappingFragment StoreEntitySet="Akcje">
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Budynki">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Budynki">
+              <MappingFragment StoreEntitySet="Budynki">
+                <ScalarProperty Name="IdBudynku" ColumnName="IdBudynku" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="LiczbaKondygnacji" ColumnName="LiczbaKondygnacji" />
+                <ScalarProperty Name="LiczbaLokali" ColumnName="LiczbaLokali" />
+                <ScalarProperty Name="RodzajBudynku" ColumnName="RodzajBudynku" />
+                <ScalarProperty Name="TypBudynku" ColumnName="TypBudynku" />
+                <ScalarProperty Name="NumerDzialki" ColumnName="NumerDzialki" />
+                <ScalarProperty Name="PowierzchniaUzytkowa" ColumnName="PowierzchniaUzytkowa" />
+                <ScalarProperty Name="IdJednostkiMiary" ColumnName="IdJednostkiMiary" />
+                <ScalarProperty Name="RokBudowy" ColumnName="RokBudowy" />
+                <ScalarProperty Name="DataOddania" ColumnName="DataOddania" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Czynsze">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Czynsze">
+              <MappingFragment StoreEntitySet="Czynsze">
+                <ScalarProperty Name="IdCzynszu" ColumnName="IdCzynszu" />
+                <ScalarProperty Name="IdWspolnotyMieszkaniowej" ColumnName="IdWspolnotyMieszkaniowej" />
+                <ScalarProperty Name="IdLokalu" ColumnName="IdLokalu" />
+                <ScalarProperty Name="IdWlasciciela" ColumnName="IdWlasciciela" />
+                <ScalarProperty Name="IdOplaty" ColumnName="IdOplaty" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+                <ScalarProperty Name="KwotaBrutto" ColumnName="KwotaBrutto" />
+                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+                <ScalarProperty Name="KwotaNetto" ColumnName="KwotaNetto" />
+                <ScalarProperty Name="IdStawkiVat" ColumnName="IdStawkiVat" />
+                <ScalarProperty Name="OdKiedy" ColumnName="OdKiedy" />
+                <ScalarProperty Name="DoKiedy" ColumnName="DoKiedy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faktury">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Faktury">
+              <MappingFragment StoreEntitySet="Faktury">
+                <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="IdAdresuKontrahenta" ColumnName="IdAdresuKontrahenta" />
+                <ScalarProperty Name="IdWspolnotyMieszkaniowej" ColumnName="IdWspolnotyMieszkaniowej" />
+                <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
+                <ScalarProperty Name="TerminPlatnosci" ColumnName="TerminPlatnosci" />
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+                <ScalarProperty Name="IdRachunkuBankowego" ColumnName="IdRachunkuBankowego" />
+                <ScalarProperty Name="DataCzasZaksiegowania" ColumnName="DataCzasZaksiegowania" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+                <ScalarProperty Name="Razem" ColumnName="Razem" />
+                <ScalarProperty Name="Zaplacono" ColumnName="Zaplacono" />
+                <ScalarProperty Name="Pozostaje" ColumnName="Pozostaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JednostkaMiary">
+            <EntityTypeMapping TypeName="NieruchomosciModel.JednostkaMiary">
+              <MappingFragment StoreEntitySet="JednostkaMiary">
+                <ScalarProperty Name="IdJednostkiMiary" ColumnName="IdJednostkiMiary" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kontrahenci">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Kontrahenci">
+              <MappingFragment StoreEntitySet="Kontrahenci">
+                <ScalarProperty Name="IdKontrahenta" ColumnName="IdKontrahenta" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Nip" ColumnName="Nip" />
+                <ScalarProperty Name="Regon" ColumnName="Regon" />
+                <ScalarProperty Name="IdRodzajuKontrahenta" ColumnName="IdRodzajuKontrahenta" />
+                <ScalarProperty Name="Telefon1" ColumnName="Telefon1" />
+                <ScalarProperty Name="Telefon2" ColumnName="Telefon2" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Dokument" ColumnName="Dokument" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lokale">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Lokale">
+              <MappingFragment StoreEntitySet="Lokale">
+                <ScalarProperty Name="IdLokalu" ColumnName="IdLokalu" />
+                <ScalarProperty Name="IdBudynku" ColumnName="IdBudynku" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="IdRodzajuLokalu" ColumnName="IdRodzajuLokalu" />
+                <ScalarProperty Name="Klatka" ColumnName="Klatka" />
+                <ScalarProperty Name="NumerLokalu" ColumnName="NumerLokalu" />
+                <ScalarProperty Name="Kondygnacja" ColumnName="Kondygnacja" />
+                <ScalarProperty Name="Udzialy" ColumnName="Udzialy" />
+                <ScalarProperty Name="Powierzchnia" ColumnName="Powierzchnia" />
+                <ScalarProperty Name="IdJednostkiMiary" ColumnName="IdJednostkiMiary" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LokaleWspolnoty">
+            <EntityTypeMapping TypeName="NieruchomosciModel.LokaleWspolnoty">
+              <MappingFragment StoreEntitySet="LokaleWspolnoty">
+                <ScalarProperty Name="IdLokaluWspolnoty" ColumnName="IdLokaluWspolnoty" />
+                <ScalarProperty Name="IdWspolnotyMieszkaniowej" ColumnName="IdWspolnotyMieszkaniowej" />
+                <ScalarProperty Name="IdLokalu" ColumnName="IdLokalu" />
+                <ScalarProperty Name="IdWlasciciela" ColumnName="IdWlasciciela" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oplaty">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Oplaty">
+              <MappingFragment StoreEntitySet="Oplaty">
+                <ScalarProperty Name="IdOplaty" ColumnName="IdOplaty" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PozycjeFaktury">
+            <EntityTypeMapping TypeName="NieruchomosciModel.PozycjeFaktury">
+              <MappingFragment StoreEntitySet="PozycjeFaktury">
+                <ScalarProperty Name="IdPozycjiFaktury" ColumnName="IdPozycjiFaktury" />
+                <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+                <ScalarProperty Name="IdUslugi" ColumnName="IdUslugi" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+                <ScalarProperty Name="IdJednostkiMiary" ColumnName="IdJednostkiMiary" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+                <ScalarProperty Name="CenaBrutto" ColumnName="CenaBrutto" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+                <ScalarProperty Name="KwotaVat" ColumnName="KwotaVat" />
+                <ScalarProperty Name="IdStawkiVat" ColumnName="IdStawkiVat" />
+                <ScalarProperty Name="CenaNetto" ColumnName="CenaNetto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracownicy">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Pracownicy">
+              <MappingFragment StoreEntitySet="Pracownicy">
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Stanowisko" ColumnName="Stanowisko" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RachunkiBankowe">
+            <EntityTypeMapping TypeName="NieruchomosciModel.RachunkiBankowe">
+              <MappingFragment StoreEntitySet="RachunkiBankowe">
+                <ScalarProperty Name="IdRachunkuBankowego" ColumnName="IdRachunkuBankowego" />
+                <ScalarProperty Name="NazwaBanku" ColumnName="NazwaBanku" />
+                <ScalarProperty Name="NumerRachunku" ColumnName="NumerRachunku" />
+                <ScalarProperty Name="Komentarz" ColumnName="Komentarz" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajAdresu">
+            <EntityTypeMapping TypeName="NieruchomosciModel.RodzajAdresu">
+              <MappingFragment StoreEntitySet="RodzajAdresu">
+                <ScalarProperty Name="IdRodzajuAdresu" ColumnName="IdRodzajuAdresu" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajKontrahenta">
+            <EntityTypeMapping TypeName="NieruchomosciModel.RodzajKontrahenta">
+              <MappingFragment StoreEntitySet="RodzajKontrahenta">
+                <ScalarProperty Name="IdRodzajuKontrahtenta" ColumnName="IdRodzajuKontrahtenta" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajLokalu">
+            <EntityTypeMapping TypeName="NieruchomosciModel.RodzajLokalu">
+              <MappingFragment StoreEntitySet="RodzajLokalu">
+                <ScalarProperty Name="IdRodzajuLokalu" ColumnName="IdRodzajuLokalu" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SposobPlatnosci">
+            <EntityTypeMapping TypeName="NieruchomosciModel.SposobPlatnosci">
+              <MappingFragment StoreEntitySet="SposobPlatnosci">
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StawkiVat">
+            <EntityTypeMapping TypeName="NieruchomosciModel.StawkiVat">
+              <MappingFragment StoreEntitySet="StawkiVat">
+                <ScalarProperty Name="IdStawkiVat" ColumnName="IdStawkiVat" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NieruchomosciModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugi">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="IdUslugi" ColumnName="IdUslugi" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wlasciciele">
+            <EntityTypeMapping TypeName="NieruchomosciModel.Wlasciciele">
+              <MappingFragment StoreEntitySet="Wlasciciele">
+                <ScalarProperty Name="IdWlasciciela" ColumnName="IdWlasciciela" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="Nip" ColumnName="Nip" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WspolnotyMieszkaniowe">
+            <EntityTypeMapping TypeName="NieruchomosciModel.WspolnotyMieszkaniowe">
+              <MappingFragment StoreEntitySet="WspolnotyMieszkaniowe">
+                <ScalarProperty Name="IdWspolnotyMieszkaniowej" ColumnName="IdWspolnotyMieszkaniowej" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="Nip" ColumnName="Nip" />
+                <ScalarProperty Name="Regon" ColumnName="Regon" />
+                <ScalarProperty Name="Krs" ColumnName="Krs" />
+                <ScalarProperty Name="DataPowstania" ColumnName="DataPowstania" />
+                <ScalarProperty Name="PoczatkowyRokKsiegowy" ColumnName="PoczatkowyRokKsiegowy" />
+                <ScalarProperty Name="BiezacyRokKsiegowy" ColumnName="BiezacyRokKsiegowy" />
+                <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+                <ScalarProperty Name="IdAkcji" ColumnName="IdAkcji" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

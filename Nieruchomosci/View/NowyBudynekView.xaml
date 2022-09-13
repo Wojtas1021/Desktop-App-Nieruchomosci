@@ -1,0 +1,149 @@
+﻿<local:JedenViewBase x:Class="Nieruchomosci.View.NowyBudynekView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nieruchomosci.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource GridZakladki}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="118.5"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Kod budynku" FontWeight="Bold"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Kod" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=Kod, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="118.5"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Adres" FontWeight="Bold"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Miasto" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy }" Text="{Binding Path=Miasto, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Ulica" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBoxStandardowy }" Text="{Binding Path=Ulica, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Numer" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBoxStandardowy }" Text="{Binding Path=Numer, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Dane techniczne" FontWeight="Bold"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Liczba lokali" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=LiczbaLokali, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Rodzaj budynku" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=RodzajBudynku, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Typ budynku" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="4" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=TypBudynku, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=LiczbaKondygnacji, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Liczba kondygnacji" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                <Label Grid.Row="1" Grid.Column="4" Content="Numer działki" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="1" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=NumerDzialki, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="2" Grid.Column="4" Content="Powierzchnia użytkowa" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}" Text="{Binding Path=PowirzchniaUzytkowa, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="3" Grid.Column="4" Content="Jednostka miary" Style="{StaticResource LabelStandardowy}"/>
+                <Grid Grid.Row="3" Grid.Column="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Row="0" Grid.Column="0" Style="{StaticResource ComboBoxStandardowy}"
+                                      ItemsSource="{Binding JednostkaMiaryComboboxItem}"
+                                      DisplayMemberPath="Symbol"
+                                      SelectedValuePath="IdJednostkiMiary"
+                                      SelectedValue="{Binding Path=IdJednostkiMiary, Mode=TwoWay}"
+                                         />
+                </Grid>
+                <Label Grid.Row="4" Grid.Column="4" Content="Rok budowy" Style="{StaticResource LabelStandardowy}"/>
+                <DatePicker Grid.Row="4" Grid.Column="6" Style="{StaticResource DatePickerStandardowy}" SelectedDate="{Binding Path=RokBudowy, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Row="4" Grid.Column="8" Content="Rok oddania" Style="{StaticResource LabelStandardowy}"/>
+                <DatePicker Grid.Row="4" Grid.Column="10" Style="{StaticResource DatePickerStandardowy}" SelectedDate="{Binding Path=RokOddania, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Podobne podmioty już zapisane w bazie danych (kliknij dwukrotnie aby wybrać):" FontWeight="Bold"/>
+                <DataGrid Grid.Row="1" Style="{StaticResource DataGridStandardowy}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nazwa" Width="150"/>
+                        <DataGridTextColumn Header="Opis" Width="150"/>
+                        <DataGridTextColumn Header="Szczegóły" Width="90"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RichTextBox Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RichTextBoxWysoki}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</local:JedenViewBase>

@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="Nieruchomosci.View.DodajNajemceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nieruchomosci.View"
+             mc:Ignorable="d" 
+             >
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource GridZakladki}">
+        <Border Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3.5*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Zasób czynszowy" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="1" Content="Najemca" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="2" Content="Przydział do lokalu" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="3" Content="Od kiedy" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="4" Content="Komentarz" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="5" Content="Rodzaj doumentu z naliczeń" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="7" Content="Termin płatności w miesiącu" Style="{StaticResource LabelStandardowy}"/>
+                    <Label Grid.Row="8" Content="Komentarz dla systemu" Style="{StaticResource LabelStandardowy}"/>
+                </Grid>
+                <StackPanel Grid.Column="1">
+                    <Label Content="Gmina" Style="{StaticResource LabelUchwała}"/>
+                    <ComboBox Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" Style="{StaticResource ComboBoxStandardowy}"/>
+                        <Label Grid.Column="2" Content="Nr teczki" Style="{StaticResource LabelStandardowy}"/>
+                        <TextBox Grid.Column="4" Style="{StaticResource TextBoxStandardowy}"/>
+                    </Grid>
+                    <DatePicker Style="{StaticResource DatePickerStandardowy}"/>
+                    <TextBox Style="{StaticResource TextBoxStandardowy}"/>
+                    <ComboBox Style="{StaticResource ComboBoxStandardowy}"/>
+                    <CheckBox Content="Osobny dokument za lokal" Style="{StaticResource CheckBoxStandardowy}"/>
+                    <Label Content="Dzień wystawienia" Style="{StaticResource LabelUchwała}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Content="Wskazany dzień" Style="{StaticResource CheckBoxStandardowy}"/>
+                        <TextBox Grid.Column="2" Style="{StaticResource TextBoxKrotki}"/>
+                        <CheckBox Grid.Column="4" Content="Ostatni dzien miesiąca" Style="{StaticResource CheckBoxStandardowy}"/>
+                    </Grid>
+                    <Label Content="Termin płatności" Style="{StaticResource LabelUchwała}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox Grid.Row="0" Grid.Column="0" Content="Wskazany dzień" Style="{StaticResource CheckBoxStandardowy}"/>
+                        <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource TextBoxKrotki}"/>
+                        <CheckBox Grid.Row="0" Grid.Column="4" Content="Dzień z następnego miesiąca" Style="{StaticResource CheckBoxStandardowy}"/>
+                        <CheckBox Grid.Row="1" Grid.Column="0" Content="Liczba dni od daty wystawienia" Style="{StaticResource CheckBoxStandardowy}"/>
+                        <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxKrotki}"/>
+                    </Grid>
+                    <DatePicker Style="{StaticResource DatePickerStandardowy}"/>
+                    <TextBox Style="{StaticResource TextBoxStandardowy}"/>
+                </StackPanel>
+                <Grid Grid.Column="2" VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column ="0" Style="{StaticResource ButtonStandardowy}" Content="Zakończ"/>
+                        <Button Grid.Column ="1" Style="{StaticResource ButtonStandardowy}" Content="Anuluj"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
+

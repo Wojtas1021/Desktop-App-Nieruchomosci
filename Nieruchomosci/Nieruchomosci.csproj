@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96316C7B-F733-4651-ACE4-198AF2A66729}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Nieruchomosci</RootNamespace>
+    <AssemblyName>Nieruchomosci</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.0.4.3, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.0.4\lib\net452\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.3.0.3, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.3.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\BusinessLogic\CzynszeB.cs" />
+    <Compile Include="Model\BusinessLogic\DatabaseClass.cs" />
+    <Compile Include="Model\BusinessLogic\FakturaB.cs" />
+    <Compile Include="Model\BusinessLogic\LokaleB.cs" />
+    <Compile Include="Model\BusinessLogic\OplatyB.cs" />
+    <Compile Include="Model\BusinessLogic\RaportB.cs" />
+    <Compile Include="Model\BusinessLogic\RaportBilans.cs" />
+    <Compile Include="Model\BusinessLogic\RaportCzynsz.cs" />
+    <Compile Include="Model\BusinessLogic\UslugaB.cs" />
+    <Compile Include="Model\BusinessLogic\WspolnotaB.cs" />
+    <Compile Include="Model\EntitiesForView\AdresForView.cs" />
+    <Compile Include="Model\EntitiesForView\AdresyKontrahentaForView.cs" />
+    <Compile Include="Model\EntitiesForView\BudynkiForView.cs" />
+    <Compile Include="Model\EntitiesForView\FakturyForView.cs" />
+    <Compile Include="Model\EntitiesForView\JednostkiMiaryForView.cs" />
+    <Compile Include="Model\EntitiesForView\KeyAndValue.cs" />
+    <Compile Include="Model\EntitiesForView\KontrahenciForView.cs" />
+    <Compile Include="Model\EntitiesForView\LokalForAllView.cs" />
+    <Compile Include="Model\EntitiesForView\OplatyForView.cs" />
+    <Compile Include="Model\EntitiesForView\RachunkiBankoweForView.cs" />
+    <Compile Include="Model\EntitiesForView\StawkiVatForView.cs" />
+    <Compile Include="Model\EntitiesForView\UslugiForView.cs" />
+    <Compile Include="Model\EntitiesForView\WlascicieleForView.cs" />
+    <Compile Include="Model\EntitiesForView\WspolnotyForView.cs" />
+    <Compile Include="Model\Entities\AdresKontrahenta.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Adresy.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\AdresyWlascicieli.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Akcje.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Budynki.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Czynsze.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Faktury.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\JednostkaMiary.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Kontrahenci.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Lokale.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\LokaleWspolnoty.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\ModelNieruchomosci.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelNieruchomosci.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\ModelNieruchomosci.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\ModelNieruchomosci.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelNieruchomosci.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Oplaty.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\PozycjeFaktury.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Pracownicy.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\RachunkiBankowe.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\RodzajAdresu.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\RodzajKontrahenta.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\RodzajLokalu.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\SposobPlatnosci.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\StawkiVat.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\sysdiagrams.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Uslugi.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Wlasciciele.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\WspolnotyMieszkaniowe.cs">
+      <DependentUpon>ModelNieruchomosci.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Validator\BusinessValidator.cs" />
+    <Compile Include="Model\Validator\StringValidator.cs" />
+    <Compile Include="Model\Validator\Validator.cs" />
+    <Compile Include="ViewModel\Abstract\JedenViewModel.cs" />
+    <Compile Include="ViewModel\Abstract\WszystkieViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CommandViewModel.cs" />
+    <Compile Include="ViewModel\CzynszeViewModel.cs" />
+    <Compile Include="ViewModel\JednostkiMiaryViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NowaUslugaViewModel.cs" />
+    <Compile Include="ViewModel\NowyAdresViewModel.cs" />
+    <Compile Include="ViewModel\DodajNajemceViewModel.cs" />
+    <Compile Include="ViewModel\DodajWlascicielaViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\NowaFakturaViewModel.cs" />
+    <Compile Include="ViewModel\NowaUchwalaViewModel.cs" />
+    <Compile Include="ViewModel\NowaWspolnotaViewModel.cs" />
+    <Compile Include="ViewModel\NowyBudynekViewModel.cs" />
+    <Compile Include="ViewModel\NowyKontrahentViewModel.cs" />
+    <Compile Include="ViewModel\RaportBilansViewModel.cs" />
+    <Compile Include="ViewModel\RaportUslugiViewModel.cs" />
+    <Compile Include="ViewModel\StawkiVatViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WorkspaceViewModel.cs" />
+    <Compile Include="ViewModel\WpisDoWykazuViewModel.cs" />
+    <Compile Include="ViewModel\WszyscyKontrahenciViewModel.cs" />
+    <Compile Include="ViewModel\WszyscyWlascicieleViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieAdresyViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieBudynkiViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieFakturyViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieLokaleViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieOplatyViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieRachunkiBankoweViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieUslugiViewModel.cs" />
+    <Compile Include="ViewModel\WszystkieWspolnotyViewModel.cs" />
+    <Compile Include="View\CzynszeView.xaml.cs">
+      <DependentUpon>CzynszeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\JedenViewBase.cs" />
+    <Compile Include="View\JednostkiMiaryView.xaml.cs">
+      <DependentUpon>JednostkiMiaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowaFakturaView.xaml.cs">
+      <DependentUpon>NowaFakturaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowaUchwalaView.xaml.cs">
+      <DependentUpon>NowaUchwalaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowaUslugaView.xaml.cs">
+      <DependentUpon>NowaUslugaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowaWspolnotaView.xaml.cs">
+      <DependentUpon>NowaWspolnotaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowyAdresView.xaml.cs">
+      <DependentUpon>NowyAdresView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowyBudynekView.xaml.cs">
+      <DependentUpon>NowyBudynekView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NowyKontrahentView.xaml.cs">
+      <DependentUpon>NowyKontrahentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RaportBilansView.xaml.cs">
+      <DependentUpon>RaportBilansView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RaportUslugi.xaml.cs">
+      <DependentUpon>RaportUslugi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StawkiVatView.xaml.cs">
+      <DependentUpon>StawkiVatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WpisDoWykazuView.xaml.cs">
+      <DependentUpon>WpisDoWykazuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszyscyKontrahenciView.xaml.cs">
+      <DependentUpon>WszyscyKontrahenciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszyscyWlascicieleView.xaml.cs">
+      <DependentUpon>WszyscyWlascicieleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieAdresyView.xaml.cs">
+      <DependentUpon>WszystkieAdresyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieBudynkiView.xaml.cs">
+      <DependentUpon>WszystkieBudynkiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieFakturyView.xaml.cs">
+      <DependentUpon>WszystkieFakturyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieLokaleView.xaml.cs">
+      <DependentUpon>WszystkieLokaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieOplatyView.xaml.cs">
+      <DependentUpon>WszystkieOplatyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieRachunkiBankoweView.xaml.cs">
+      <DependentUpon>WszystkieRachunkiBankoweView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieUslugiView.xaml.cs">
+      <DependentUpon>WszystkieUslugiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WszystkieViewBase.cs" />
+    <Compile Include="View\WszystkieWspolnotyView.xaml.cs">
+      <DependentUpon>WszystkieWspolnotyView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CzynszeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DodajNajemceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DodajWlascicielaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JednostkiMiaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\BaseCommand.cs" />
+    <Compile Include="View\DodajNajemceView.xaml.cs">
+      <DependentUpon>DodajNajemceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DodajWlascicielaView.xaml.cs">
+      <DependentUpon>DodajWlascicielaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\MainWindowResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowaFakturaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowaUchwalaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowaUslugaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowaWspolnotaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowyAdresView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowyBudynekView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NowyKontrahentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RaportBilansView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RaportUslugi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StawkiVatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WpisDoWykazuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszyscyKontrahenciView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszyscyWlascicieleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieAdresyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieBudynkiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieFakturyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieLokaleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieOplatyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieRachunkiBankoweView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieUslugiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WszystkieWspolnotyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\Entities\ModelNieruchomosci.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelNieruchomosci.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Model\Entities\ModelNieruchomosci.edmx.diagram">
+      <DependentUpon>ModelNieruchomosci.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Icons\edytuj %281%29.png" />
+    <Resource Include="Content\Icons\edytuj %282%29.png" />
+    <Resource Include="Content\Icons\edytuj %283%29.png" />
+    <Resource Include="Content\Icons\edytuj %284%29.png" />
+    <Resource Include="Content\Icons\edytuj %285%29.png" />
+    <Resource Include="Content\Icons\edytuj %286%29.png" />
+    <Resource Include="Content\Icons\edytuj %287%29.png" />
+    <Resource Include="Content\Icons\edytuj %288%29.png" />
+    <Resource Include="Content\Icons\edytuj %289%29.png" />
+    <Resource Include="Content\Icons\iconmonstr-customer-1-96.png" />
+    <Resource Include="Content\Icons\iconmonstr-user-23-64.png" />
+    <Resource Include="Content\Icons\iconmonstr-user-8-120.png" />
+    <Resource Include="Content\Icons\iconmonstr-warning-7-64.png" />
+    <Resource Include="Content\Icons\ikona %281%29.png" />
+    <Resource Include="Content\Icons\ikona %2810%29.png" />
+    <Resource Include="Content\Icons\ikona %2811%29.png" />
+    <Resource Include="Content\Icons\ikona %2812%29.png" />
+    <Resource Include="Content\Icons\ikona %2813%29.png" />
+    <Resource Include="Content\Icons\ikona %2814%29.png" />
+    <Resource Include="Content\Icons\ikona %2815%29.png" />
+    <Resource Include="Content\Icons\ikona %2816%29.png" />
+    <Resource Include="Content\Icons\ikona %2817%29.png" />
+    <Resource Include="Content\Icons\ikona %2818%29.png" />
+    <Resource Include="Content\Icons\ikona %2819%29.png" />
+    <Resource Include="Content\Icons\ikona %282%29.jpg" />
+    <Resource Include="Content\Icons\ikona %282%29.png" />
+    <Resource Include="Content\Icons\ikona %2820%29.png" />
+    <Resource Include="Content\Icons\ikona %2821%29.png" />
+    <Resource Include="Content\Icons\ikona %2822%29.png" />
+    <Resource Include="Content\Icons\ikona %2823%29.png" />
+    <Resource Include="Content\Icons\ikona %2824%29.png" />
+    <Resource Include="Content\Icons\ikona %2825%29.png" />
+    <Resource Include="Content\Icons\ikona %2826%29.png" />
+    <Resource Include="Content\Icons\ikona %2828%29.png" />
+    <Resource Include="Content\Icons\ikona %2829%29.png" />
+    <Resource Include="Content\Icons\ikona %283%29.png" />
+    <Resource Include="Content\Icons\ikona %2830%29.png" />
+    <Resource Include="Content\Icons\ikona %2831%29.png" />
+    <Resource Include="Content\Icons\ikona %2832%29.png" />
+    <Resource Include="Content\Icons\ikona %2833%29.png" />
+    <Resource Include="Content\Icons\ikona %2834%29.png" />
+    <Resource Include="Content\Icons\ikona %2835%29.png" />
+    <Resource Include="Content\Icons\ikona %2836%29.png" />
+    <Resource Include="Content\Icons\ikona %2837%29.png" />
+    <Resource Include="Content\Icons\ikona %2838%29.png" />
+    <Resource Include="Content\Icons\ikona %284%29.png" />
+    <Resource Include="Content\Icons\ikona %285%29.png" />
+    <Resource Include="Content\Icons\ikona %286%29.png" />
+    <Resource Include="Content\Icons\ikona %287%29.png" />
+    <Resource Include="Content\Icons\ikona %288%29.png" />
+    <Resource Include="Content\Icons\ikona %289%29.png" />
+    <Resource Include="Content\Icons\outline_skip_previous_black_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Entities\ModelNieruchomosci.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelNieruchomosci.edmx</DependentUpon>
+      <LastGenOutput>ModelNieruchomosci.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Entities\ModelNieruchomosci.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelNieruchomosci.edmx</DependentUpon>
+      <LastGenOutput>ModelNieruchomosci.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

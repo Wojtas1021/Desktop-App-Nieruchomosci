@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9bfe01fa00114f01a3a53b900aa65a09" Name="Diagram1">
+        <EntityTypeShape EntityType="NieruchomosciModel.AdresKontrahenta" Width="1.5" PointX="7.5" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Adresy" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.AdresyWlascicieli" Width="1.5" PointX="7.5" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Akcje" Width="1.5" PointX="3" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Budynki" Width="1.5" PointX="10.5" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Czynsze" Width="1.5" PointX="9.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Faktury" Width="1.5" PointX="15.75" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.JednostkaMiary" Width="1.5" PointX="5.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Kontrahenci" Width="1.5" PointX="7.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Lokale" Width="1.5" PointX="12.75" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.LokaleWspolnoty" Width="1.5" PointX="12.75" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Oplaty" Width="1.5" PointX="5.25" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.PozycjeFaktury" Width="1.5" PointX="18" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Pracownicy" Width="1.5" PointX="0.75" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.RachunkiBankowe" Width="1.5" PointX="5.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.RodzajAdresu" Width="1.5" PointX="5.25" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.RodzajKontrahenta" Width="1.5" PointX="5.25" PointY="44.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.RodzajLokalu" Width="1.5" PointX="5.25" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.SposobPlatnosci" Width="1.5" PointX="5.25" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.StawkiVat" Width="1.5" PointX="5.25" PointY="54" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Uslugi" Width="1.5" PointX="5.25" PointY="57.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.Wlasciciele" Width="1.5" PointX="5.25" PointY="61" IsExpanded="true" />
+        <EntityTypeShape EntityType="NieruchomosciModel.WspolnotyMieszkaniowe" Width="1.5" PointX="7.5" PointY="25.625" IsExpanded="true" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresKontrahenta_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresKontrahenta_Kontrahenci" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresKontrahenta_RodzajAdresu" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Faktury_AdresKontrahenta" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Adresy_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresyWlascicieli_Adresy" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Kontrahenci_Adresy" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_WspolnotyMieszkaniowe_Adresy" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresyWlascicieli_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresyWlascicieli_RodzajAdresu" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_AdresyWlascicieli_Wlasciciele" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Akcje_Pracownicy" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Budynki_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Czynsze_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Faktury_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_JednostkaMiary_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Kontrahenci_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Lokale_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_LokaleWspolnoty_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Oplaty_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_PozycjeFaktury_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_RachunkiBankowe_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_RodzajAdresu_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_RodzajKontrahenta_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_RodzajLokalu_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_SposobPlatnosci_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_StawkiVat_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Uslugi_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Wlasciciele_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_WspolnotyMieszkaniowe_Akcje" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Budynki_JednostkaMiary" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Lokale_Budynki" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Czynsze_Lokale" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Czynsze_Oplaty" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Czynsze_StawkiVat" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Czynsze_Wlasciciele" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Czynsze_WspolnotyMieszkaniowe" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Faktury_RachunkiBankowe" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Faktury_SposobPlatnosci" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Faktury_WspolnotyMieszkaniowe" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_PozycjeFaktury_Faktury" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Lokale_JednostkaMiary" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_PozycjeFaktury_JednostkaMiary" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Kontrahenci_RodzajKontrahenta" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_Lokale_RodzajLokalu" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_LokaleWspolnoty_Lokale" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_LokaleWspolnoty_Wlasciciele" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_LokaleWspolnoty_WspolnotyMieszkaniowe" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_PozycjeFaktury_StawkiVat" ManuallyRouted="false" />
+        <AssociationConnector Association="NieruchomosciModel.FK_PozycjeFaktury_Uslugi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

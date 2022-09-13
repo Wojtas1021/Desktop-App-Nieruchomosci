@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="Nieruchomosci.View.CzynszeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nieruchomosci.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Margin="8" Height="600" Width="500" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Czynsz w wybranym okresie" Margin="3" HorizontalContentAlignment="Center"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Od" Margin="3" HorizontalContentAlignment="Center"/>
+                    <DatePicker Grid.Column="1" Margin="5" SelectedDate="{Binding DataOd}"/>
+                    <Label Grid.Column="2" Content="do" Margin="3" HorizontalContentAlignment="Center"/>
+                    <DatePicker Grid.Column="3" Margin="5" SelectedDate="{Binding DataDo}"/>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Wybierz opłate: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <ComboBox Grid.Column="1" Margin="5"
+                          ItemsSource="{Binding OplatyComboBoxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding Path=IdOplaty, Mode=TwoWay}"
+                          />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Wybierz wspólnotę: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <ComboBox Grid.Column="1" Margin="5"
+                          ItemsSource="{Binding WspolnotyComboBoxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding Path=IdWspolnoty, Mode=TwoWay}"
+                          />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Wybierz lokal: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <ComboBox Grid.Column="1" Margin="5"
+                          ItemsSource="{Binding LokaleComboBoxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding Path=IdLokalu, Mode=TwoWay}"
+                          />
+                </Grid>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="139"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="130"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="3" Content="Oblicz opłatę" Command="{Binding ObliczCommand}"/>
+                    <Button Grid.Column="2" Margin="3" Content="Oblicz czynsz" Command="{Binding ObliczCommand2}"/>
+                    <Button Grid.Column="4" Margin="3" Content="Oblicz całość" Command="{Binding ObliczCommand3}"/>
+                </Grid>
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="247*"/>
+                        <ColumnDefinition Width="144*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Opłata razem: " HorizontalContentAlignment="Center"/>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Path=CzynszLokal}" HorizontalContentAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Łączny czynsz lokalu: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Column="1" Margin="3" Content="{Binding Path=CzynszWspolnota}" HorizontalContentAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Łączna kwota wspólnota: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Column="1" Margin="3" Content="{Binding Path=RaportRazem}" HorizontalContentAlignment="Center" />
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

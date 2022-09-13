@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="Nieruchomosci.View.WpisDoWykazuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nieruchomosci.View"
+             mc:Ignorable="d"  
+            >
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource GridZakladki}">
+        <Border Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Style="{StaticResource GridZakladki}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="118.5"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Dane podstawowe" FontWeight="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Nazwisko" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Imię" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Nazwa krótka" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="2" Grid.Column="4" Content="Drugie imię" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                </Grid>
+                <Grid Grid.Row="1" Style="{StaticResource GridZakladki}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="118.5"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="72"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Adres" FontWeight="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Kraj" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="1" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Miasto" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Numer" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Województwo" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="4" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="Powiat" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="5" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="2" Grid.Column="4" Content="Ulica" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="6" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="3" Grid.Column="4" Content="Uzupłnienie" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="3" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="6" Grid.Column="4" Content="Gmina" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="6" Grid.Column="6" Style="{StaticResource ComboBoxStandardowy}"/>
+                </Grid>
+                <Grid Grid.Row="2" Style="{StaticResource GridZakladki}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="72"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSeparacyjnaStandardowa}"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Dane identyfikacyjne" FontWeight="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Płeć" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="1" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Format NIP" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Format Pesel" Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="3" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Format dok." Style="{StaticResource LabelStandardowy}"/>
+                    <ComboBox Grid.Row="4" Grid.Column="2" Style="{StaticResource ComboBoxStandardowy}"/>
+                    <CheckBox Grid.Row="1" Grid.Column="6" Content="Podatnik VAT" Style="{StaticResource CheckBoxStandardowy}"/>
+                    <TextBox Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="2" Grid.Column="4" Content="NIP" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="3" Grid.Column="4" Content="Pesel" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="3" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                    <Label Grid.Row="4" Grid.Column="4" Content="Inny dok." Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Grid.Row="4" Grid.Column="6" Style="{StaticResource TextBoxStandardowy}"/>
+                </Grid>
+                <Grid Grid.Row="3" Style="{StaticResource GridZakladki}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Podobne podmioty zapisane już w bazie danych (kliknij dwukrotnie aby wybrać):" FontWeight="Bold"/>
+                    <DataGrid Grid.Row="1" Style="{StaticResource DataGridStandardowy}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nazwa" Width="150"/>
+                            <DataGridTextColumn Header="Rodzaj" Width="80"/>
+                            <DataGridTextColumn Header="Opis" Width="150"/>
+                            <DataGridTextColumn Header="Szczegóły" Width="90"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="4" Style="{StaticResource GridZakladki}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1" Style="{StaticResource GridZakladki}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column ="0" Style="{StaticResource ButtonStandardowy}" Content="Zapisz"/>
+                        <Button Grid.Column ="1" Style="{StaticResource ButtonStandardowy}" Content="Zakończ"/>
+                        <Button Grid.Column ="2" Style="{StaticResource ButtonStandardowy}" Content="Anuluj"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

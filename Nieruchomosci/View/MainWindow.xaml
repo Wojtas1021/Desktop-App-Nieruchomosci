@@ -1,0 +1,267 @@
+﻿<Window x:Class="Nieruchomosci.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nieruchomosci"
+        mc:Ignorable="d"
+        Title="Nieruchomosci" Height="650" Width="800" WindowState="Maximized">
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </Window.Resources>
+    <Grid Style="{StaticResource GridStandardowy}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" Style="{StaticResource MenuStandard}">
+            <MenuItem Header="_Katalogi">
+                <MenuItem Header="Miejscowości i ulice">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/ikona (14).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Budynki i lokale">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/ikona (1).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Kontrahenci" />
+                <MenuItem Header="Dodaj właściciela" Command="{Binding CreateWlasciecielCommand}"/>
+                <MenuItem Header="Dodaj najemcę" Command="{Binding CreateNajemcaCommand}" />
+                <Separator/>
+                <MenuItem Header="Dodaj kontrahenta" Command="{Binding CreateKontrahentCommand}"/>
+                <Separator/>
+                <MenuItem Header="Wspólnoty"/>
+                <MenuItem Header="Zasoby czynszowe"/>
+                <MenuItem Header="Współwłasności"/>
+                <Separator/>
+                <MenuItem Header="Zmiana hasła użytkownika"/>
+                <MenuItem Header="Zmiana zalogowanego użytkownika"/>
+                <Separator/>
+                <MenuItem Header="Koniec"/>
+            </MenuItem>
+            <MenuItem Header="K_sięgowość">
+                <MenuItem Header="Wspólnoty"/>
+                <MenuItem Header="Zasoby czynszowe"/>
+                <MenuItem Header="Nowa faktura" Command="{Binding CreateFakturaCommand}"/>
+                <!--<MenuItem Header="Rozwiązanie ugody" Command="{Binding CreateRozwiazanieCommand}"/>-->
+                <MenuItem Header="Wpis do wykazu" Command="{Binding CrateWpisCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Edycja">
+                <MenuItem Header="Zmień">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (8).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Wstaw">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (7).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Usuń">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/ikona (8).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Odśwież">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/ikona (20).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Wytnij" InputGestureText="Ctrl+X">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (2).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Kopiuj" InputGestureText="Ctrl+C">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (1).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Wklej" InputGestureText="Ctrl+V">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (4).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Pierwszy">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/ikona (17).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Poprzedni">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (3).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Następny">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (5).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Ostatni">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/ikona (18).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Szukaj" InputGestureText="Ctrl+F">
+                    <MenuItem.Icon>
+                        <Image Source="/Content/Icons/edytuj (6).png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Operacje">
+                <MenuItem Header="Wspólnota"/>
+                <MenuItem Header="Właściciele"/>
+                <MenuItem Header="Uchwały"/>
+            </MenuItem>
+            <MenuItem Header="_Zestawienia">
+                <MenuItem Header="Lokale"/>
+                <MenuItem Header="Ceny"/>
+                <MenuItem Header="Zebrania i uchwały"/>
+                <MenuItem Header="Rozliczenia wspólnot i właścicieli"/>
+                <MenuItem Header="Lista obecności"/>
+            </MenuItem>
+            <MenuItem Header="_Ustawienia">
+                <MenuItem Header="Kolor aktywnej zakładki"/>
+                <MenuItem Header="Widok tabeli"/>
+                <MenuItem Header="Parametry"/>
+            </MenuItem>
+            <MenuItem Header="_e-korekta">
+                <MenuItem Header="Transmisja danych do serwera"/>
+                <MenuItem Header="Uzupełnienie loginów i haseł"/>
+                <MenuItem Header="Harmonogram automatycznego eksportu"/>
+                <MenuItem Header="Wysyłka zewnętrznego rozliczenia mediów"/>
+                <Separator/>
+                <MenuItem Header="Przygotowane operacje eksportu dokumentów"/>
+            </MenuItem>
+            <MenuItem Header="O_kna">
+                <MenuItem Header="Kaskada"/>
+                <MenuItem Header="Sąsiadująco w poziomie"/>
+                <MenuItem Header="Sąsiadująco w pionie"/>
+                <MenuItem Header="Zamknij"/>
+                <MenuItem Header="Zamknij wszystkie"/>
+                <MenuItem Header="Wydruk aktywnej tabeli"/>
+            </MenuItem>
+            <MenuItem Header="_Pomoc">
+                <MenuItem Header="Indeks"/>
+                <MenuItem Header="Kontekstowa"/>
+                <MenuItem Header="Co nowego"/>
+                <MenuItem Header="Wykaz zestawień z możliwością grupowania"/>
+                <MenuItem Header="Zrób zgłoszenie i/lub wyślij nagranie"/>
+                <MenuItem Header="Zobacz instniejące zgłoszenia"/>
+                <MenuItem Header="Pomoc przez zdalne połączenie"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Column="0" Grid.Row="1" Style="{StaticResource ToolbarStandard}">
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (17).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium2}">
+                <Image Source="/Content/Icons/ikona (16).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium2}">
+                <Image Source="/Content/Icons/ikona (20).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium2}">
+                <Image Source="/Content/Icons/ikona (15).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (18).png" Stretch="Fill" />
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}" Command="{Binding CreateFakturaCommand}">
+                <Image Source="/Content/Icons/ikona (7).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (19).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (8).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (10).png" Stretch="Fill" />
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium}">
+                <Image Source="/Content/Icons/ikona (13).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium}">
+                <Image Source="/Content/Icons/ikona (12).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium}" Command="{Binding CreateWpisCommand}">
+                <Image Source="/Content/Icons/ikona (3).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarDuzy2}">
+                <Image Source="/Content/Icons/ikona (4).png" Stretch="Fill" />
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (6).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (9).png" Stretch="Fill" />
+            </ToggleButton>
+            <Separator/>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium2}">
+                <Image Source="/Content/Icons/ikona (2).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (5).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBar}">
+                <Image Source="/Content/Icons/ikona (14).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarDuzy}" Command="{Binding CreateNajemcaCommand}">
+                <Image Source="/Content/Icons/ikona (21).png" Stretch="Fill" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium}" Command="{Binding CreateWlasciecielCommand}">
+                <Image Source="/Content/Icons/iconmonstr-user-8-120.png" />
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonToolBarMedium}" Command="{Binding CreateKontrahentCommand}">
+                <Image Source="/Content/Icons/iconmonstr-customer-1-96.png" />
+            </ToggleButton>
+        </ToolBar>
+        <Border Grid.Column="0" Grid.Row="2">
+            <HeaderedContentControl 
+                    Header="Pasek nagwigacji"
+                    Content="{Binding Path=Commands}"
+                    ContentTemplate="{StaticResource CommandsTemplate}"
+                    Style="{StaticResource MainHCCStyle}"
+                    />
+        </Border>
+        <Border Grid.Column="1" Grid.Row="2">
+            <HeaderedContentControl 
+                    Header="Aktywne zakładki"
+                    Content="{Binding Path=Workspaces}"
+                    ContentTemplate="{StaticResource WorkspacesTemplate}"
+                    Style="{StaticResource MainHCCStyle}"
+                    />
+        </Border>
+        <StatusBar Grid.Column="0" Grid.Row="3" Style="{StaticResource statusBarStandard}">
+            <StatusBarItem>
+                <ToggleButton Style="{StaticResource ToggleButtonStandardowy}">
+                    <Image Source="/Content/Icons/edytuj (9).png" />
+                </ToggleButton>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock>Wojciech Poraziński</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem >
+                <ProgressBar Style="{StaticResource ProgresBarStandard}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" Margin="2">
+                <TextBlock>Wersja 1.0</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
+

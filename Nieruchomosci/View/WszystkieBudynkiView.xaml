@@ -1,0 +1,28 @@
+﻿<local:WszystkieViewBase x:Class="Nieruchomosci.View.WszystkieBudynkiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nieruchomosci.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding IdBudynku}"/>
+                <DataGridTextColumn Header="Kod" Binding="{Binding Kod}"/>
+                <DataGridTextColumn Header="Miasto" Binding="{Binding Miasto}"/>
+                <DataGridTextColumn Header="Ulica" Binding="{Binding Ulica}"/>
+                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"/>
+                <DataGridTextColumn Header="Liczba kondygnacji" Binding="{Binding LiczbaKondygnacji}"/>
+                <DataGridTextColumn Header="Rodzaj budunku" Binding="{Binding RodzajBudynku}"/>
+                <DataGridTextColumn Header="Typ budynku" Binding="{Binding TypBudynku}" />
+                <DataGridTextColumn Header="Numer działki" Binding="{Binding NumerDzialki}"/>
+                <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Powierzchnia}"/>
+                <DataGridTextColumn Header="Jednoskta miary" Binding="{Binding JednostkaMiarySymbol}"/>
+                <DataGridTextColumn Header="Rok budowy" Binding="{Binding RokBudowy}"/>
+                <DataGridTextColumn Header="Data oddania" Binding="{Binding DataOddania}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</local:WszystkieViewBase>

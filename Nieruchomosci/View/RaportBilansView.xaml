@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Nieruchomosci.View.RaportBilansView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nieruchomosci.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Margin="8" Height="600" Width="500" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="33"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Bilans" Margin="3" HorizontalContentAlignment="Center"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Wybierz wspólnotę: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <ComboBox Grid.Column="1" Margin="5"
+                          ItemsSource="{Binding WspolnotyComboBoxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding Path=IdWspolnoty, Mode=TwoWay}"
+                          />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="3" Content="Oblicz Fundusz" Command="{Binding ObliczCommand}" />
+                    <Button Grid.Column="2" Content="Oblicz Wydatki" Command="{Binding ObliczCommand2}"/>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="Łączna kwota funduszu remontowego : " Margin="3" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Column="1" Grid.Row="0" Margin="3" Content="{Binding Path=SumaFundusz}" HorizontalContentAlignment="Center" />
+                </Grid>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Łączna kwota wydatków: " Margin="3" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Column="1" Margin="3" Content="{Binding Path=SumaWydatki}" HorizontalContentAlignment="Center" />
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
